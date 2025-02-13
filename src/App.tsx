@@ -1,3 +1,4 @@
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import About from "./pages/home/About";
 import CollabSec from "./pages/home/CollabSec";
@@ -18,6 +19,7 @@ const App = () => {
       <Working />
       <PricingPlans />
       <CollabSec />
+      <Footer />
     </>
   );
 };
