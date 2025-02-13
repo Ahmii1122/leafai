@@ -6,6 +6,7 @@ export default {
       overlock: ["Overlock", "sans-serif"],
       opensans: ["Open-sans", "sans-serif"],
       outfit: ["Outfit", "sans-serif"],
+      roboto: ["Roboto", "sans-serif"],
     },
     extend: {
       maxWidth: {
@@ -13,6 +14,10 @@ export default {
       },
       colors: {
         primary: "#317B22",
+        secondary: "#90DE78",
+        "secondary-light": "#BBF9A8",
+        gray: "#6D6D6D",
+        "green-light": "#629C56",
       },
     },
   },
