@@ -7,7 +7,7 @@ import img4 from "../../assets/3rd.png";
 const About = () => {
   return (
     <section className="max-w-contained mx-auto mt-[254px]">
-      <div className="flex flex-col md:flex-row md:mx-0 gap-10 md:gap-52">
+      <div className="flex flex-col md:flex-row md:mx-0 mx-2 gap-10 md:gap-52">
         <h3 className="font-outfit font-bold text-[48px] text-nowrap">
           About Us
         </h3>
