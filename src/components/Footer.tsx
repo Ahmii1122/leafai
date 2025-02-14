@@ -26,7 +26,7 @@ const footerLinks = [
 const Footer = () => {
   return (
     <footer className="bg-white py-10">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="relative max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Logo & Social Section */}
           <div className="flex flex-col space-y-4 md:col-span-2 lg:col-span-2">
@@ -69,6 +69,11 @@ const Footer = () => {
               </div>
             ))}
           </div>
+        </div>
+        <div>
+          <p className="flex self-center text-center md:mx-[30%] mt-[50px] mx-[20%] text-nowrap font-roboto font-normal text-[14px]">
+            Copyright LeafAI.com, All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
