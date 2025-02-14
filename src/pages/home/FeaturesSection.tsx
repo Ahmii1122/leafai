@@ -6,7 +6,7 @@ import search from "../../assets/search.png";
 const FeaturesSection = () => {
   return (
     <section className="max-w-contained mx-auto">
-      <div className="flex flex-col md:flex-row gap-36 mt-[150px] mx-5 md:mx-0">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-36 mt-7 md:mt-[150px] mx-5 md:mx-0">
         <p className="font-outfit font-bold text-[48px] leading-[60px]">
           Let’s Explore our Top Key Features
         </p>

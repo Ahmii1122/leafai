@@ -7,11 +7,11 @@ const CollabSec = () => {
         className="relative flex flex-col md:flex-row bg-cover bg-center mb-10 bg-no-repeat mt-[157px] border-none rounded-xl max-w-contained mx-auto px-6 py-24"
         style={{ backgroundImage: `url(${bg})` }}
       >
-        <div className="px-[54px]  ">
-          <h1 className="font-outfit   justify-between text-center leading-tight md:text-start font-bold text-[48px]">
+        <div className="md:px-[54px]  ">
+          <h1 className="font-outfit justify-between text-center leading-tight md:text-start font-bold text-[48px]">
             Let’s Collaborate With Us
           </h1>
-          <p className="font-opensans font-normal text-[30px] leading-tight px- text-center md:text-start mt-4">
+          <p className="font-opensans font-normal text-[30px] leading-tight  text-center md:text-start mt-4">
             Ready to revolutionize your organization's search experience?
           </p>
         </div>

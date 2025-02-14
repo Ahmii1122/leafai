@@ -78,7 +78,7 @@ const PricingPlans = () => {
   const [billingCycle, setBillingCycle] = useState("monthly");
 
   return (
-    <section className="max-w-contained mx-auto mt-[214px]">
+    <section className="max-w-contained mx-auto mt-14 md:mt-[214px]">
       <div className="text-center p">
         <h2 className="text-[48px] font-outfit font-bold">Pricing Plans</h2>
         <p className="text-gray font-opensans font-normal text-[20px] max-w-[450px] mx-auto mt-2">
@@ -98,7 +98,7 @@ const PricingPlans = () => {
               Monthly billing
             </button>
             <button
-              className={`px-6 py-2 rounded-full font-semibold transition font-roboto ${
+              className={`px-6 py-2 rounded-full  font-semibold transition font-roboto ${
                 billingCycle === "yearly"
                   ? "bg-white shadow   text-black"
                   : " text-gray/70"
@@ -114,7 +114,7 @@ const PricingPlans = () => {
             (plan) => (
               <div
                 key={plan.id}
-                className="p-6 rounded-lg shadow-lg bg-white flex flex-col h-full"
+                className="p-6 rounded-lg shadow-[10px_20px_20px_#e8e9e8] bg-white flex flex-col h-full"
               >
                 <p className="bg-primary/20 font-normal font-opensans text-primary mx-28  my-2 tex rounded-full ">
                   {plan.title}

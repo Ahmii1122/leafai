@@ -47,7 +47,7 @@ const features = [
 
 const FeaturesGrid = () => {
   return (
-    <section className="max-w-contained mx-auto  mt-[214px]">
+    <section className="max-w-contained mx-auto mt-10  md:mt-[214px]">
       <div className="flex flex-col justify-between items-center mx-2 lg:mx-0">
         <h1 className="font-outfit font-bold text-[48px]">Our Features</h1>
         <p className="font-opensans font-normal text-[#6D6D6D] text-[20px] leading-[32px] items-center justify-items-center text-center mx-2 md:mx-[32%]">

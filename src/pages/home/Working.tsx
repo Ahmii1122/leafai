@@ -33,7 +33,7 @@ const features = [
 const Working = () => {
   const [activeFeature, setActiveFeature] = useState(features[0]);
   return (
-    <section className="max-w-contained mx-auto mt-[198px] bg-[#F9FAF9]">
+    <section className="max-w-contained mx-auto mt-6 md:mt-[198px] bg-[#F9FAF9]">
       <div className="flex flex-col justify-between items-center text-center">
         <h1 className="font-outfit font-bold text-[48px]">How it Works</h1>
         <p className="font-opensans text-gray font-normal text-[20px] leading-[32px] max-w-[500px]">
