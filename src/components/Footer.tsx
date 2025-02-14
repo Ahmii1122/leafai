@@ -71,7 +71,7 @@ const Footer = () => {
           </div>
         </div>
         <div>
-          <p className="flex self-center text-center md:mx-[30%] mt-[50px] mx-[20%] text-nowrap font-roboto font-normal text-[14px]">
+          <p className=" items-center text-center mt-[50px] text-nowrap font-roboto font-normal text-[14px]">
             Copyright LeafAI.com, All rights reserved.
           </p>
         </div>

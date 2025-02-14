@@ -6,8 +6,8 @@ import img4 from "../../assets/3rd.png";
 
 const About = () => {
   return (
-    <section className="max-w-contained mx-auto mt-[254px]">
-      <div className="flex flex-col md:flex-row md:mx-0 mx-2 gap-10 md:gap-52">
+    <section className="max-w-contained mx-auto mt-[254px] bg-[#F9FAF9] h-full">
+      <div className="flex flex-col md:flex-row px-3 gap-10 md:gap-52">
         <h3 className="font-outfit font-bold text-[48px] text-nowrap">
           About Us
         </h3>
@@ -19,21 +19,25 @@ const About = () => {
         </p>
       </div>
       <div className="mt-[72px] flex flex-col lg:flex-row  gap-[24px]">
-        <img src={img1} alt="Software Support logo" className="h-1/2" />
+        <img src={img1} alt="Software Support logo" className="h-1/2 p-2" />
         <div
-          className="bg-cover w-full border-none rounded-lg items-center flex flex-col md:flex-row"
+          className="bg-cover  w-full border-none rounded-lg items-center overflow-hidden flex flex-col md:flex-row"
           style={{ backgroundImage: `url(${bg})` }}
         >
-          <img src={img2} alt="" className=" md:h-full md:w-full mx-[35px]" />
+          <img
+            src={img2}
+            alt=""
+            className=" md:h-[275px] md:w-[275px] mx-[35px] "
+          />
           <img
             src={img3}
             alt=""
-            className="rotate-90 mt-3 md:rotate-0 lg:h-32 lg:w-full "
+            className="rotate-90 mt-3 md:rotate-0 lg:h-32 lg:w-full z-0 "
           />
           <img
             src={img4}
             alt=""
-            className="w-16 h-16 mt-16 md:mt-4 lg:mt-0 lg:mr-[65px] lg:-ml-4"
+            className="w-16 h-16 mt-16 md:mt-4 lg:mt-0 lg:mr lg: lg:-ml-24 z-10"
           />
         </div>
       </div>

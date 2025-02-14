@@ -1,5 +1,5 @@
 import { useState } from "react";
-import img from "../../assets/Pasted image.png";
+import img from "../../assets/Pasted image1.png";
 import { FaChevronCircleRight } from "react-icons/fa";
 
 const features = [
@@ -33,10 +33,10 @@ const features = [
 const Working = () => {
   const [activeFeature, setActiveFeature] = useState(features[0]);
   return (
-    <section className="max-w-contained mx-auto mt-[198px]">
+    <section className="max-w-contained mx-auto mt-[198px] bg-[#F9FAF9]">
       <div className="flex flex-col justify-between items-center text-center">
         <h1 className="font-outfit font-bold text-[48px]">How it Works</h1>
-        <p className="font-opensans text-gray font-normal text-[20px] leading-[32px] mx-[30%]">
+        <p className="font-opensans text-gray font-normal text-[20px] leading-[32px] max-w-[500px]">
           Discover the power of intelligent search across your entire digital
           workspace.
         </p>
@@ -47,18 +47,22 @@ const Working = () => {
             <button
               key={feature.id}
               onClick={() => setActiveFeature(feature)}
-              className={`p-[49px] text-left rounded-lg shadow-md flex flex-col ${
+              className={`p-[19px] text-left rounded-lg border border-gray/30 shadow-md flex flex-col   ${
                 activeFeature.id === feature.id
-                  ? "bg-primary-dark text-white"
+                  ? "bg-primary-dark text-white  transition-all duration-1000"
                   : "bg-white text-gray/60 font-roboto font-normal text-[30px]"
               }`}
             >
               <div className="flex items-center justify-between w-full">
-                <h3 className="font-roboto font-semibold text-[30px]">
+                <h3
+                  className={`font-roboto text-[30px] ${
+                    activeFeature === feature ? "font-bold" : "font-normal"
+                  }`}
+                >
                   {feature.title}
                 </h3>
                 <FaChevronCircleRight
-                  size={46}
+                  size={28}
                   className={
                     activeFeature.id === feature.id
                       ? "text-white rotate-90"
@@ -76,19 +80,18 @@ const Working = () => {
             </button>
           ))}
         </div>
-        <div className="md:w-[56%]  bg-white p-6 shadow-2xl rounded-lg">
+        <div className="md:w-[56%]  bg-white  shadow-2xl rounded-lg">
           <h2 className="text-[38px] font-bold font-roboto  mt-[41px] mx-[44px] mb-4">
             {activeFeature.title}
           </h2>
           <p className="text-gray font-opensans font-normal text-[24px] mt-[21px] mx-[44px] leading-[32px]">
             {activeFeature.text}
-            {activeFeature.text}
           </p>
-          <button className="mx-[44px] mt-[26px] bg-primary-dark text-white px-5 py-3 rounded-lg">
+          <button className="mx-[44px] mt-[26px] bg-primary-dark font-opensans font-semibold text-white px-8 py-4 rounded-lg">
             Get Started
           </button>
-          <div className="mt-16 flex gap-4">
-            <img src={img} alt="" className="h-full w-full" />
+          <div className="mt-7 mb-6 flex items-center gap-4">
+            <img src={img} alt="" className="h-48 w-[98%] px-5" />
           </div>
         </div>
       </div>

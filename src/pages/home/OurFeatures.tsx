@@ -56,11 +56,11 @@ const FeaturesGrid = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 mt-[70px] bg-gray/5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6 mt-[70px]">
         {features.map((feature) => (
           <div
             key={feature.id}
-            className="border-none rounded-lg p-6 shadow-sm bg-white"
+            className="border-none rounded-lg p-6 shadow-[20px_10px_90px_10px_#00000020] bg-white"
           >
             <img className=" mb-4 " src={feature.icon}></img>
             <h3 className="font-bold mb-4 font-opensans text-[21px]">
