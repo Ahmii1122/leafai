@@ -9,7 +9,7 @@ import xls from "../../assets/excel.png";
 
 const HeroSection = () => {
   return (
-    <section className="mx-auto mt-[56px] max-w-contained overflow-hidden">
+    <section className="mx-auto mt-[56px] max-w-contained overflow-hidden p-4">
       <div
         className="relative bg-cover bg-center bg-no-repeat mt-[144px] border-none rounded-xl max-w-contained mx-auto px-6 py-12"
         style={{ backgroundImage: `url(${bg})` }}

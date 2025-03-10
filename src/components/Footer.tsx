@@ -26,7 +26,7 @@ const footerLinks = [
 const Footer = () => {
   return (
     <footer className="bg-white py-10">
-      <div className="relative max-w-contained mx-auto px-6 md:px-12">
+      <div className="relative max-w-contained mx-auto px-4 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Logo & Social Section */}
           <div className="flex flex-col space-y-4 md:col-span-2 lg:col-span-2">
