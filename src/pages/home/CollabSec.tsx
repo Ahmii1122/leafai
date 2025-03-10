@@ -2,9 +2,9 @@ import bg from "../../assets/bg-hero.png";
 
 const CollabSec = () => {
   return (
-    <section className="max-w-contained mx-auto">
+    <section className="max-w-contained mx-auto ">
       <div
-        className="relative flex flex-col md:flex-row bg-cover bg-center mb-10 bg-no-repeat mt-[157px] border-none rounded-xl max-w-contained mx-auto px-6 py-24"
+        className="relative flex flex-col md:flex-row bg-cover bg-center mb-10 bg-no-repeat mt-[57px] md:mt-[157px] border-none rounded-xl max-w-contained mx-auto px-6 py-24"
         style={{ backgroundImage: `url(${bg})` }}
       >
         <div className="md:px-[54px]  ">

@@ -24,7 +24,7 @@ const FeaturesSection = () => {
         {features.map((feature) => (
           <div
             key={feature.id}
-            className="flex flex-col items-center border border-gray/30 rounded-xl p-6"
+            className="flex flex-col items-center border border-gray/30 rounded-xl p-6 "
           >
             <div className="relative">
               <img

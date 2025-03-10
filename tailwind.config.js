@@ -10,7 +10,7 @@ export default {
     },
     extend: {
       maxWidth: {
-        contained: "1260px",
+        contained: "1440px",
       },
       colors: {
         primary: "#317B22",

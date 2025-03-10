@@ -24,20 +24,16 @@ const About = () => {
           className="bg-cover  w-full border-none rounded-lg items-center overflow-hidden flex flex-col md:flex-row"
           style={{ backgroundImage: `url(${bg})` }}
         >
-          <img
-            src={img2}
-            alt=""
-            className=" md:h-[275px] md:w-[275px] mx-[35px] "
-          />
+          <img src={img2} alt="" className=" md:h-[275px] md:w-[275px] " />
           <img
             src={img3}
             alt=""
-            className="rotate-90 mt-3 md:rotate-0 lg:h-32 lg:w-full z-0 "
+            className="rotate-90 mt-3 md:rotate-0 lg:h-32 lg:w-[430px] z-0 pr-"
           />
           <img
             src={img4}
             alt=""
-            className="w-16 h-16 mt-16 md:mt-4 lg:mt-0 lg:mr lg: lg:-ml-24 z-10"
+            className="w- h-16 mt-12 pb-2 md:pb-0 md:mt-4 lg:mt-0 lg:pr-4  lg: z-10"
           />
         </div>
       </div>
