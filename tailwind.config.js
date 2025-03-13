@@ -13,6 +13,8 @@ export default {
         contained: "1440px",
       },
       colors: {
+        "light-primary": "#BBF9A8",
+        lightgray: "#000000",
         primary: "#317B22",
         "primary-dark": "#317B22",
         secondary: "#90DE78",
