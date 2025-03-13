@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FiCheck } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface Plan {
   id: number;
@@ -47,25 +47,18 @@ const PricingPlans: Plan[] = [
 
 const SelectPlan = () => {
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
-  const navigate = useNavigate();
+
+  // Load selected plan from localStorage on page load
+  useEffect(() => {
+    const storedPlan = localStorage.getItem("selectedPlan");
+    if (storedPlan) {
+      setSelectedPlan(JSON.parse(storedPlan));
+    }
+  }, []);
 
   const handlePlanSelect = (plan: Plan) => {
-    // Toggle selection: If already selected, deselect it
-    if (selectedPlan?.id === plan.id) {
-      setSelectedPlan(null);
-      localStorage.removeItem("selectedPlan");
-    } else {
-      setSelectedPlan(plan);
-      localStorage.setItem("selectedPlan", JSON.stringify(plan));
-    }
-  };
-
-  const proceedToPayment = () => {
-    if (!selectedPlan) {
-      alert("Please select a plan before proceeding.");
-      return;
-    }
-    navigate("/payment");
+    setSelectedPlan(plan);
+    localStorage.setItem("selectedPlan", JSON.stringify(plan));
   };
 
   return (
@@ -100,9 +93,6 @@ const SelectPlan = () => {
                 <span className="text-lg text-gray-500">/m</span>
               )}
             </h3>
-            <p className="text-gray-500 text-[17px] text-center font-normal mt-2">
-              Up to 2 models free forever
-            </p>
             <ul className="mt-7 mb-[15px] text-left text-gray-600 flex-grow">
               {plan.features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-2">
@@ -112,15 +102,10 @@ const SelectPlan = () => {
             </ul>
             <button
               className={`mt-8 w-full py-4 rounded-lg flex justify-center items-center gap-2 ${
-                plan.title === "Professional"
-                  ? "bg-primary-dark border-none text-white"
-                  : ""
-              }
-               ${
-                 selectedPlan?.id === plan.id
-                   ? "bg-green-500 text-white"
-                   : "border border-gray-400 text-black"
-               }`}
+                selectedPlan?.id === plan.id
+                  ? "bg-green-500 text-white"
+                  : "border border-gray-400 text-black"
+              }`}
             >
               {selectedPlan?.id === plan.id && <FiCheck />} Get started for free
             </button>
@@ -128,12 +113,20 @@ const SelectPlan = () => {
         ))}
       </div>
       <div className="flex justify-end p-6">
-        <button
-          onClick={proceedToPayment}
-          className="font-opensans bg-primary-dark rounded-md mb-36 mt-16 text-white font-semibold text-[16px] px-12 py-4"
-        >
-          Proceed to payment
-        </button>
+        {selectedPlan ? (
+          <Link to="/payment">
+            <button className="font-opensans bg-primary-dark rounded-md mb-36 mt-16 text-white font-semibold text-[16px] px-12 py-4">
+              Proceed to payment
+            </button>
+          </Link>
+        ) : (
+          <button
+            onClick={() => alert("Please select a plan to continue")}
+            className="font-opensans bg-primary-dark rounded-md mb-36 mt-16 text-white font-semibold text-[16px] px-12 py-4"
+          >
+            Proceed to payment
+          </button>
+        )}
       </div>
     </section>
   );

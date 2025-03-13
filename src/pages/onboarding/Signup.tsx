@@ -1,23 +1,26 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import img from "../../assets/image 63.png";
 import img2 from "../../assets/Group 1000001747.png";
 
+interface FormData {
+  email: string;
+  name: string;
+  companyName: string;
+  role: string;
+  termsAccepted: boolean;
+  pricingPlan: string;
+}
+
 const Signup = () => {
-  const [formData, setFormData] = useState({
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState<FormData>({
     email: "",
     name: "",
     companyName: "",
     role: "",
     termsAccepted: false,
-  });
-
-  const [errors, setErrors] = useState({
-    email: "",
-    name: "",
-    companyName: "",
-    role: "",
-    termsAccepted: "",
+    pricingPlan: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,8 +29,49 @@ const Signup = () => {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
+  };
 
-    setErrors((prev) => ({ ...prev, [name]: "" }));
+  const getdata = async (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    if (!formData.termsAccepted) {
+      e.preventDefault();
+      alert("Please accept the terms & conditions to proceed.");
+      return;
+    }
+
+    e.preventDefault();
+    const { email, name, companyName, role, termsAccepted } = formData;
+
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        name,
+        companyName,
+        role,
+        termsAccepted,
+      }),
+    };
+
+    try {
+      const res = await fetch(
+        "https://leafai-e8118-default-rtdb.firebaseio.com/userData.json",
+        options
+      );
+
+      if (res.ok) {
+        alert("Data Saved");
+        navigate("./selectplan");
+      } else {
+        alert("An Error occurred ");
+      }
+    } catch (error) {
+      console.error("Error submitting data:", error);
+    }
   };
 
   return (
@@ -113,11 +157,13 @@ const Signup = () => {
           </div>
 
           <Link
-            to="/selectplan"
-            className="block text-center bg-primary-dark text-16px font-opensans font-normal text-white text-nowrap p-4 px-[15%] rounded-md"
-            onClick={() =>
-              localStorage.setItem("signupData", JSON.stringify(formData))
-            }
+            to={formData.termsAccepted ? "/selectplan" : "#"}
+            onClick={getdata}
+            className={`block text-center text-16px font-opensans font-normal text-nowrap p-4 px-[15%] rounded-md ${
+              formData.termsAccepted
+                ? "bg-primary-dark text-white"
+                : "bg-primary/50 text-white cursor-not-allowed"
+            }`}
           >
             Continue to plan selection
           </Link>
