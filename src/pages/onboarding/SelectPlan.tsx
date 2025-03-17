@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FiCheck } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface Plan {
   id: number;
@@ -47,18 +47,51 @@ const PricingPlans: Plan[] = [
 
 const SelectPlan = () => {
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
-
-  // Load selected plan from localStorage on page load
-  useEffect(() => {
-    const storedPlan = localStorage.getItem("selectedPlan");
-    if (storedPlan) {
-      setSelectedPlan(JSON.parse(storedPlan));
-    }
-  }, []);
+  const navigate = useNavigate();
 
   const handlePlanSelect = (plan: Plan) => {
     setSelectedPlan(plan);
     localStorage.setItem("selectedPlan", JSON.stringify(plan));
+  };
+
+  const handleProceedToPayment = async () => {
+    if (!selectedPlan) {
+      alert("Please select a plan before proceeding.");
+      return;
+    }
+
+    const userId = localStorage.getItem("userId");
+
+    if (!userId) {
+      alert("User data not found. Please sign up first.");
+      return;
+    }
+
+    const paymentData = {
+      planTitle: selectedPlan.title,
+      planPrice: selectedPlan.price,
+      features: selectedPlan.features,
+    };
+
+    try {
+      const res = await fetch(
+        `https://leafai-e8118-default-rtdb.firebaseio.com/userData/${userId}/paymentData.json`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(paymentData),
+        }
+      );
+
+      if (res.ok) {
+        alert("Plan saved successfully!");
+        navigate("/payment");
+      } else {
+        alert("Failed to save the plan.");
+      }
+    } catch (error) {
+      console.error("Error saving payment data:", error);
+    }
   };
 
   return (
@@ -81,7 +114,7 @@ const SelectPlan = () => {
             }`}
           >
             <p className="bg-primary/20 text-primary font-normal font-opensans text-center rounded-full inline-block px-4 py-1">
-              {plan.title}
+              {plan.title}/month
             </p>
             <h3
               className={`mt-4 font-bold text-center ${
@@ -113,20 +146,17 @@ const SelectPlan = () => {
         ))}
       </div>
       <div className="flex justify-end p-6">
-        {selectedPlan ? (
-          <Link to="/payment">
-            <button className="font-opensans bg-primary-dark rounded-md mb-36 mt-16 text-white font-semibold text-[16px] px-12 py-4">
-              Proceed to payment
-            </button>
-          </Link>
-        ) : (
-          <button
-            onClick={() => alert("Please select a plan to continue")}
-            className="font-opensans bg-primary-dark rounded-md mb-36 mt-16 text-white font-semibold text-[16px] px-12 py-4"
-          >
-            Proceed to payment
-          </button>
-        )}
+        <button
+          onClick={handleProceedToPayment}
+          className={`font-opensans rounded-md mb-36 mt-16 text-white font-semibold text-[16px] px-12 py-4 ${
+            selectedPlan
+              ? "bg-primary-dark"
+              : "bg-primary-dark cursor-not-allowed"
+          }`}
+          disabled={!selectedPlan}
+        >
+          Proceed to payment
+        </button>
       </div>
     </section>
   );

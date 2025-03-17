@@ -64,6 +64,10 @@ const Signup = () => {
       );
 
       if (res.ok) {
+        const responseData = await res.json(); // Get Firebase-generated ID
+        const userId = responseData.name; // Firebase returns the unique key under `.name`
+
+        localStorage.setItem("userId", userId);
         alert("Data Saved");
         navigate("./selectplan");
       } else {
