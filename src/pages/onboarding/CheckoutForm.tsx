@@ -24,7 +24,7 @@ export default function CheckoutForm() {
     const result = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: window.location.origin, // Optional: for Stripe logs
+        return_url: `${window.location.origin}/datasource`,
       },
     });
 
@@ -41,10 +41,13 @@ export default function CheckoutForm() {
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
-      <PaymentElement id="payment-element" />
+      <PaymentElement id="payment-element" className="mb-8" />
       <button disabled={isProcessing || !stripe || !elements} id="submit">
-        <span id="button-text">
-          {isProcessing ? "Processing ... " : "Pay now"}
+        <span
+          id="button-text "
+          className="border py-4 px-[125px] bg-primary-dark text-white rounded-md text-nowrap mt-14"
+        >
+          {isProcessing ? "Processing ... " : "Complete Purchase"}
         </span>
       </button>
       {message && <div id="payment-message">{message}</div>}

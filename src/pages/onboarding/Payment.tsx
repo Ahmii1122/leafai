@@ -104,8 +104,8 @@ const Payment = () => {
   }, [selectedPlan]);
 
   return (
-    <section className="flex">
-      <div className="w-[50%] lg:px-28">
+    <section className="flex flex-col md:flex-row">
+      <div className="w-full md:w-[50%] pb-4 p-2 md:px-4 lg:px-28">
         <img className="pt-24" src={img} alt="Checkout" />
         <p className="font-opensans font-semibold text-[24px] pt-8">
           Secure Checkout
@@ -116,7 +116,7 @@ const Payment = () => {
         <p className="font-opensans font-semibold text-[16px] pt-6 pb-2">
           Your subscription
         </p>
-        <div className="border border-gray/50 rounded-md w-full max-w-sm p-4 mb-4">
+        <div className="border border-gray/50 rounded-md w-full max-w-sm p-4 mb-4 ">
           <div className="text-gray/50 flex border-b pb-2 items-center border-gray/50 justify-between pt-3">
             <p className="font-opensans font-semibold text-[16px]">
               {selectedPlan?.planTitle}{" "}
@@ -128,19 +128,21 @@ const Payment = () => {
             <p>{selectedPlan?.planPrice}</p>
           </div>
         </div>
-        {stripepromise && clientSecret ? (
-          <Elements
-            stripe={stripepromise}
-            options={{
-              clientSecret,
-              appearance: { theme: "stripe" },
-            }}
-          >
-            <CheckoutForm />
-          </Elements>
-        ) : (
-          <p>⚠️ Waiting for Stripe setup...</p>
-        )}
+        <div className="lg:w-full md:w-[80%]">
+          {stripepromise && clientSecret ? (
+            <Elements
+              stripe={stripepromise}
+              options={{
+                clientSecret,
+                appearance: { theme: "stripe" },
+              }}
+            >
+              <CheckoutForm />
+            </Elements>
+          ) : (
+            <p>⚠️ Waiting for Stripe setup...</p>
+          )}
+        </div>
       </div>
       <div className="w-full md:w-[45%] lg:w-[50%] bg-light-primary/30 flex flex-col justify-center">
         <p className="font-roboto font-bold text-[36px] md:text-[50px] px-[5%] md:px-[60px] mt-[40px] md:mt-[106px] mb-3 text-center">
@@ -151,7 +153,7 @@ const Payment = () => {
           from you.
         </p>
         <div className="pt-[80px] md:pt-[116px] pb-16 flex justify-center">
-          <img className="w-[80%] md:w-auto" src={img2} alt="Illustration" />
+          <img className="w-screen md:w-auto" src={img2} alt="Illustration" />
         </div>
       </div>
     </section>
