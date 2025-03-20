@@ -30,8 +30,11 @@ export default function CheckoutForm() {
 
     if (result.error) {
       setMessage(result.error.message ?? "Unknown error occurred");
-    } else if (result.paymentIntent?.status === "succeeded") {
-      // ✅ Use optional chaining
+    } else if (
+      "paymentIntent" in result &&
+      result.paymentIntent === "succeeded"
+    ) {
+      // ✅ Safe check for `paymentIntent`
       console.log("✅ Payment successful:", result.paymentIntent);
       navigate("/DataSource"); // 🔥 Redirect to DataSource page
     }
