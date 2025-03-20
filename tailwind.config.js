@@ -22,6 +22,20 @@ export default {
         gray: "#6D6D6D",
         "green-light": "#629C56",
       },
+      animation: {
+        "spin-slow": "spin-slow 2.5s linear infinite", // Slower spin
+        "spin-fast": "spin-fast 1s linear infinite", // Faster spin
+      },
+      keyframes: {
+        "spin-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        "spin-fast": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+      },
     },
   },
   plugins: [],

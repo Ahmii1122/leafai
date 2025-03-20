@@ -15,8 +15,8 @@ const Connecting = () => {
         if (oldProgress >= 100) {
           setLoading(false);
           setTimeout(() => {
-            navigate("/docsscan"); // Redirect to next page
-          }, 500); // Hide loading after completion
+            navigate("/docsscan");
+          }, 500);
           return 100;
         }
         return oldProgress + 10;
@@ -26,8 +26,8 @@ const Connecting = () => {
     return () => clearInterval(interval);
   }, [navigate]);
   return (
-    <section className="flex flex-col md:flex-row">
-      <div className="w-full md:w-[50%] px-16">
+    <section className="flex flex-col-reverse md:flex-row">
+      <div className="w-full md:w-[50%] px-3 lg:px-16">
         <img src={img} alt="" className="mt-[121px]" />
         <p className="font-opensans font-bold text-3xl mt-7">
           Preparing Your Personalized Search Experience
@@ -60,21 +60,21 @@ const Connecting = () => {
         </div>
       </div>
       <div className="w-full md:w-[50%] bg-green-50">
-        <div className="flex flex-col items-center justify-center h-screen  bg-cover">
+        <div className="flex flex-col items-center justify-center  bg-cover">
           {loading ? (
             <>
-              <p className="text-2xl font-opensans font-bold  mb-3 mt-[416px]">
+              <p className="text-2xl font-opensans font-bold  mb-3 mt-20  md:mt-[416px]">
                 Connecting To Data Sources...
               </p>
-              <div className="w-80 h-10 bg-primary/30 rounded-full">
+              <div className="w-80 h-10 bg-primary/30 rounded-full mb-20">
                 <div
-                  className="h-full bg-primary rounded-full transition-all duration-500 mb-[514px]"
+                  className="h-full bg-primary rounded-full transition-all duration-500 mb-20 md:mb-[514px]"
                   style={{ width: `${progress}%` }}
                 ></div>
               </div>
             </>
           ) : (
-            <p className="text-lg font-semibold text-gray-700 mt-[416px]">
+            <p className="text-lg font-semibold text-gray-700 mt-20 mb-20 md:mt-[416px]">
               ✅ Data Sources Connected!
             </p>
           )}
@@ -85,9 +85,3 @@ const Connecting = () => {
 };
 
 export default Connecting;
-const steps = [
-  { text: "Scanning Documents...", color: "green" },
-  { text: "Building Search Index...", color: "lightgreen" },
-  { text: "Optimizing AI Models...", color: "yellowgreen" },
-  { text: "Finalizing Setup...", color: "darkgreen" },
-];

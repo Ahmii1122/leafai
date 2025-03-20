@@ -1,17 +1,31 @@
 import timer from "../../assets/timer.png";
 import img from "../../assets/image 63.png";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-const DocsScan = () => {
+
+const BuildingSearch = () => {
   const navigate = useNavigate();
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      navigate("/buildingsearch");
-    }, 5000);
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          navigate("/optimizingai");
+          return 100;
+        }
+        return prev + 5;
+      });
+    }, 300);
 
-    return () => clearTimeout(timer);
+    return () => clearInterval(interval);
   }, [navigate]);
+
+  const getFillColor = () => {
+    if (progress < 33) return "#86efac"; // Light Green
+    if (progress < 66) return "#22c55e"; // Medium Green
+    return "#166534"; // Dark Green
+  };
 
   return (
     <section className="flex flex-col-reverse md:flex-row">
@@ -39,7 +53,7 @@ const DocsScan = () => {
             Optimizing AI models for your specific content
           </li>
         </ol>
-        <div className="flex md:max-w-[510px] justify-between border mt-60 mb-14 border-white bg-primary/10 gap-2">
+        <div className="flex md:max-w-[510px] justify-between border mt-10 md:mt-60 mb-14 border-white bg-primary/10 gap-2">
           <img src={timer} alt="" className="pl-3 py-1" />
           <p className=" mt-3 px-1 items-center text-justify text-[13px] font-semibold font-opensans text-primary">
             This may take a few minutes depending on the volume of your data.
@@ -47,25 +61,40 @@ const DocsScan = () => {
           </p>
         </div>
       </div>
-      <div className="w-full md:w-1/2 bg-primary/20 bg-cover ">
-        <div className="   flex   items-center justify-center  ">
-          <div className="relative w-32 h-32 mt-11 md:mt-[316px] flex items-center justify-center">
-            {/* Rotating Circle with the same thickness as dots */}
-            <div className="w-full h-full border-[16px] border-green-700 border-t-transparent rounded-full animate-spin-slow"></div>
+      <div className="w-full md:w-1/2 bg-green-100">
+        <div className="flex flex-col items-center justify-center mt-10 mb-10">
+          <svg
+            width="150"
+            height="150"
+            viewBox="0 0 120 120"
+            className="fill-green-100"
+          >
+            {/* Background Circle */}
+            <circle cx="60" cy="60" r="50" fill={getFillColor()} />
 
-            {/* Dots Rotating Along the Circle */}
-            <div className="absolute w-full h-full animate-spin-fast">
-              <div className="absolute w-6 h-4 bg-green-700 rounded-md top-0 left-[50%] transform -translate-x-1/2"></div>
-              <div className="absolute w-6 h-4 bg-green-700 rounded-md bottom-0 left-[50%] transform -translate-x-1/2"></div>
-            </div>
-          </div>
+            {/* Filling Circle */}
+            <circle
+              cx="60"
+              cy="60"
+              r="50"
+              fill=""
+              clipPath="url(#circleClip)"
+            />
+
+            {/* Clip Path to Fill Inwards */}
+            <defs>
+              <clipPath id="circleClip">
+                <circle cx="60" cy="60" r={50 - progress / 2} />
+              </clipPath>
+            </defs>
+          </svg>
+          <p className=" mt-5font-opensans font-bold text-[24px]">
+            Building Search Index...
+          </p>
         </div>
-        <p className=" flex justify-center mb-5 mt-10 font-opensans font-bold text-[24px] items-center">
-          Scanning Documents...
-        </p>
       </div>
     </section>
   );
 };
 
-export default DocsScan;
+export default BuildingSearch;
