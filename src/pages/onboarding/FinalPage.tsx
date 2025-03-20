@@ -8,11 +8,11 @@ interface UserData {
 }
 
 interface PaymentData {
-  planName?: string;
+  planTitle?: string;
 }
 
 interface DataSource {
-  name?: string;
+  dataSource?: string;
 }
 
 const FinalPage = () => {
@@ -38,13 +38,31 @@ const FinalPage = () => {
         if (res.ok) {
           const data: {
             email?: string;
-            paymentData?: PaymentData;
-            selectedDataSource?: DataSource;
+            paymentData?: Record<string, PaymentData> | undefined;
+            selectedDataSource?: Record<string, DataSource> | undefined;
           } = await res.json();
 
           setUserData({ email: data.email || "N/A" }); // Ensure email exists
-          setPaymentData(data.paymentData || {}); // Store payment details (if exists)
-          setDataSource(data.selectedDataSource || {}); // Store data source details (if exists)
+
+          // ✅ Check if paymentData exists before accessing keys
+          let selectedPayment: PaymentData = {};
+          if (data.paymentData && Object.keys(data.paymentData).length > 0) {
+            const paymentKey = Object.keys(data.paymentData)[0];
+            selectedPayment = data.paymentData[paymentKey];
+          }
+
+          // ✅ Check if selectedDataSource exists before accessing keys
+          let selectedSource: DataSource = {};
+          if (
+            data.selectedDataSource &&
+            Object.keys(data.selectedDataSource).length > 0
+          ) {
+            const dataSourceKey = Object.keys(data.selectedDataSource)[0];
+            selectedSource = data.selectedDataSource[dataSourceKey];
+          }
+
+          setPaymentData(selectedPayment);
+          setDataSource(selectedSource);
         } else {
           console.error("Failed to fetch user data");
         }
@@ -88,18 +106,21 @@ const FinalPage = () => {
               <p className="text-lg font-semibold font-opensans">
                 Selected Plan:{" "}
                 <span className="font-normal">
-                  {paymentData.planName || "N/A"}
+                  {paymentData.planTitle || "N/A"}
                 </span>
               </p>
               <p className="text-lg font-semibold font-opensans">
-                Data Source :{" "}
-                <span className="font-normal">{dataSource.name || "N/A"}</span>
+                Data Source:{" "}
+                <span className="font-normal">
+                  {dataSource.dataSource || "N/A"}
+                </span>
               </p>
             </>
           ) : (
             <p className="text-lg text-gray-500">Loading user data...</p>
           )}
         </div>
+
         <p className="font-opensans font-semibold text-xl mt-[35px]">
           What’s next:
         </p>

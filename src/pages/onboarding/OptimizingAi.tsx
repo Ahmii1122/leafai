@@ -17,7 +17,7 @@ const OptimizingAi = () => {
             return 0; // Restart the animation
           } else {
             clearInterval(interval);
-            // setTimeout(() => navigate("/finalizing"), 500); // Navigate after delay
+            setTimeout(() => navigate("/finalizing"), 500); // Navigate after delay
           }
         }
         return prev + 1; // Move to next step
