@@ -63,7 +63,7 @@ const DataSource: React.FC = () => {
   };
 
   return (
-    <section className="flex flex-col md:flex-row ">
+    <section className="max-w-contained mx-auto flex flex-col md:flex-row ">
       <div className="w-full md:w-[50%] px-20">
         <img src={img} alt="Connect Data Sources" className="mt-12" />
         <p className="font-opensans font-semibold text-2xl mt-5">

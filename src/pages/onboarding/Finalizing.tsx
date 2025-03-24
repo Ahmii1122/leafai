@@ -16,7 +16,7 @@ const Finalizing = () => {
   }, [navigate]);
 
   return (
-    <section className="flex flex-col-reverse md:flex-row">
+    <section className="max-w-contained mx-auto flex flex-col-reverse md:flex-row">
       <div className="w-full md:w-[50%] px-3 lg:px-16">
         <img src={img} alt="" className="mt-[121px]" />
         <p className="font-opensans font-bold text-3xl mt-7">
@@ -47,7 +47,7 @@ const Finalizing = () => {
           </p>
         </div>
       </div>
-      <div className="w-full md:w-1/2 bg-primary/10">
+      <div className="w-full md:w-1/2 bg-primary/10 ">
         {" "}
         <div className="flex flex-col items-center justify-center mt-10  md:mt-60">
           {loading && (
@@ -56,7 +56,7 @@ const Finalizing = () => {
               <div className="absolute w-32 h-32  rounded-full opacity-75"></div>
             </div>
           )}
-          <p className="md:absolute md:bottom-36 flex items-center justify-center font-opensans mb-10  md:mt-0  font-bold text-[24px]">
+          <p className=" flex items-center justify-center font-opensans mb-10  md:mt-20  font-bold text-[24px]">
             Finalizing setup...
           </p>
         </div>

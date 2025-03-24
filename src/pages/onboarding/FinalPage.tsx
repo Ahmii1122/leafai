@@ -75,7 +75,7 @@ const FinalPage = () => {
   }, [navigate]);
 
   return (
-    <section>
+    <section className="max-w-contained mx-auto">
       <div className="bg-primary/20">
         <div className="flex flex-col items-center justify-center pt-[74px]">
           <img src={img} alt="" className="w-28 h-28" />

@@ -28,7 +28,7 @@ const OptimizingAi = () => {
   }, [cycle, navigate]);
 
   return (
-    <section className="flex flex-col-reverse md:flex-row">
+    <section className="max-w-contained mx-auto flex flex-col-reverse md:flex-row">
       <div className="w-full md:w-[50%] px-3 lg:px-16">
         <img src={img} alt="" className="mt-[121px]" />
         <p className="font-opensans font-bold text-3xl mt-7">

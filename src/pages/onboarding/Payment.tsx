@@ -104,7 +104,7 @@ const Payment = () => {
   }, [selectedPlan]);
 
   return (
-    <section className="flex flex-col md:flex-row">
+    <section className="max-w-contained mx-auto flex flex-col md:flex-row">
       <div className="w-full md:w-[50%] pb-4 p-2 md:px-4 lg:px-28">
         <img className="pt-24" src={img} alt="Checkout" />
         <p className="font-opensans font-semibold text-[24px] pt-8">
